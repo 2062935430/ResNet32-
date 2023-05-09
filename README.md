@@ -131,11 +131,11 @@
     	def forward(x):
 	          return x
             
-  在第6行处，需要在__init__方法中调用父类的__init__方法，例如super(xxxNet, self).__init__()否则模型就无法继承父类的属性和方法，  
-  例如parameters()，to()等，这会影响到模型的初始化和训练。  
-  
-  在第8行处，需要在forward方法的参数列表中加上self，例如def forward(self, x):否则forward方法就无法访问模型的实例属性和方法，  
-  例如self.xxx，这会导致模型无法正常运行。  
+  在第6行处，需要在__init__方法中调用父类的__init__方法，例如super(xxxNet, self).__init__()，  
+  如果你不调用父类的__init__方法，你的模型就无法继承父类的属性和方法，这会影响到模型的初始化和训练。  
+    
+  在第8行处，需要在forward方法的参数列表中加上self，如：def forward(self, x):，
+  如果你不加上self参数，你的forward方法就无法访问模型的实例属性和方法，这会导致模型无法正常运行。  
   
   所以修改后的模板应该如下：  
   
